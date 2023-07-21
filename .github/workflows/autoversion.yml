@@ -20,7 +20,7 @@ jobs:
         run: Set-Content 'version.cs' $Time
 
       - name: switching from HTTPS to SSH
-        run: > 
+        run: |
           $SSH = git remote get-url origin
           git remote set-url origin $SSH
       - name: check for changes
