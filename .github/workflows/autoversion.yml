@@ -20,7 +20,9 @@ jobs:
         run: Set-Content 'version.cs' $Time
 
       - name: switching from HTTPS to SSH
-        run: git remote set-url origin ${{ github.ssh }}
+        run: > 
+          $SSH = git remote get-url origin
+          git remote set-url origin $SSH
       - name: check for changes
         run: git status
       - name: stage changed files
