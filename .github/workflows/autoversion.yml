@@ -20,8 +20,7 @@ jobs:
           echo (Get-Content 'version.cs')
           $SSH = git remote get-url origin
           git remote set-url origin $SSH
-          git status
-          git add .
+          git add 'version.cs'
           git config --local user.name actions-user
           git config --local user.email "actions@github.com" 
           git commit -m "Auto updating version"
