@@ -28,5 +28,4 @@ jobs:
           git config --local user.email "actions@github.com" 
           git commit -m "Auto updating version"
           git fetch origin master
-          push code to master
           git push origin HEAD:master
