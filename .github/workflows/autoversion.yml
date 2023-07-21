@@ -12,27 +12,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
       - name: Get time
         run: $Time = Get-Date
-
       - name: Replace version
-        run: Set-Content 'version.cs' $Time
-
+        run: |
+          Set-Content 'version.cs' $Time
+          echo (Get-Content 'version.cs')
       - name: switching from HTTPS to SSH
         run: |
           $SSH = git remote get-url origin
           git remote set-url origin $SSH
-      - name: check for changes
-        run: git status
-      - name: stage changed files
-        run: git add .
-      - name: commit changed files
-        run: |
+          git status
+          git add .
           git config --local user.name actions-user
           git config --local user.email "actions@github.com" 
           git commit -m "Auto updating version"
-      - name: fetch from master
-        run: git fetch origin master
-      - name: push code to master
-        run: git push origin HEAD:master
+          git fetch origin master
+          push code to master
+          git push origin HEAD:master
