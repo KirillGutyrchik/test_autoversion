@@ -28,7 +28,10 @@ jobs:
       - name: stage changed files
         run: git add .
       - name: commit changed files
-        run: git commit -m "Auto updating version"
+        run: |
+          git config --local user.name actions-user
+          git config --local user.email "actions@github.com" 
+          git commit -m "Auto updating version"
       - name: fetch from master
         run: git fetch origin master
       - name: push code to master
