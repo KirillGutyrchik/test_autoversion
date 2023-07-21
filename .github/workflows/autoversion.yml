@@ -18,8 +18,6 @@ jobs:
         run: |
           Set-Content 'version.cs' $Time
           echo (Get-Content 'version.cs')
-      - name: switching from HTTPS to SSH
-        run: |
           $SSH = git remote get-url origin
           git remote set-url origin $SSH
           git status
