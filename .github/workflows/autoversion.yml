@@ -2,7 +2,7 @@ name: AutoVersion
 
 on:
   schedule:
-  - cron: '*/5 * * * *'
+    cron: '*/5 * * * *'
   push:
     branches: [ master ]
 
@@ -20,7 +20,7 @@ jobs:
         run: Set-Content 'version.cs' $Time
 
       - name: switching from HTTPS to SSH
-        run: git remote set-url origin ${{ secrets.ssh }}
+        run: git remote set-url origin ${{ github.ssh }}
       - name: check for changes
         run: git status
       - name: stage changed files
