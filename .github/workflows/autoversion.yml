@@ -16,7 +16,7 @@ jobs:
         run: $Time = Get-Date
       - name: Replace version
         run: |
-          Set-Content 'version.cs' $Time
+          Set-Content 'version.cs' 'test'
           git config --local user.name actions-user
           git config --local user.email "actions@github.com"
           git fetch
