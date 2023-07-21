@@ -1,0 +1,34 @@
+name: AutoVersion
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  autoversion:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Get time
+        run: $Time = Get-Date
+
+      - name: Get AssemblyInfo file path
+        run: $File = 'version.cs' 
+
+      - name: Replace version
+        run: Set-Content $File $Time
+
+      - name: switching from HTTPS to SSH
+        run: git remote set-url origin ${{ secrets.ssh }}
+      - name: check for changes
+        run: git status
+      - name: stage changed files
+        run: git add .
+      - name: commit changed files
+        run: git commit -m "Auto updating version"
+      - name: fetch from master
+        run: git fetch origin master
+      - name: push code to master
+        run: git push origin HEAD:master
