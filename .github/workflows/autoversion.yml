@@ -2,9 +2,7 @@ name: AutoVersion
 
 on:
   schedule:
-  - cron: '*/5 * * * *'
-  push:
-    branches: [ master ]
+  - cron: '33 3 * * *'
 
 jobs:
   autoversion:
