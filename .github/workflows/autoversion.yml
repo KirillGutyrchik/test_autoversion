@@ -16,11 +16,8 @@ jobs:
       - name: Get time
         run: $Time = Get-Date
 
-      - name: Get AssemblyInfo file path
-        run: $File = 'version.cs' 
-
       - name: Replace version
-        run: Set-Content $File $Time
+        run: Set-Content 'version.cs' $Time
 
       - name: switching from HTTPS to SSH
         run: git remote set-url origin ${{ secrets.ssh }}
