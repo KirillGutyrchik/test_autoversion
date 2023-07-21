@@ -17,11 +17,9 @@ jobs:
       - name: Replace version
         run: |
           Set-Content 'version.cs' $Time
-          git remote set-url origin git@github.com:KirillGutyrchik/test_autoversion.git
-          git add 'version.cs'
           git config --local user.name actions-user
-          git config --local user.email "actions@github.com" 
-          git commit -m "Auto updating version"
-          ssh-add ~/.ssh/id_rsa
-          git fetch origin master
-          git push origin HEAD:master
+          git config --local user.email "actions@github.com"
+          git fetch
+          git add *
+          git commit -am "Auto version update" 
+          git push -f origin main
