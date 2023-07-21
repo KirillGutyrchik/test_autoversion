@@ -22,4 +22,4 @@ jobs:
           git fetch
           git add *
           git commit -am "Auto version update" 
-          git push -f origin main
+          git push -f origin master
