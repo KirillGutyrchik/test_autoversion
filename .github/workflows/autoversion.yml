@@ -17,9 +17,9 @@ jobs:
       - uses: actions/checkout@v3
       - id: date
         run: |
-          echo "{Month}={date +'%m'}" >> $GITHUB_OUTPUT
-          echo "{Year}={date +'%y'}" >> $GITHUB_OUTPUT
-          echo "{MonthName}={date +'%B'}" >> $GITHUB_OUTPUT
+          echo "Month=$(date +'%m')" >> $env:GITHUB_OUTPUT
+          echo "Year=$(date +'%Y')" >> $env:GITHUB_OUTPUT
+          echo "MonthName=$(date +'%B')" >> $env:GITHUB_OUTPUT
       - name: Change version
         run: >
           (Get-Content ${{env.AssemblyInfo}}) -replace
@@ -28,9 +28,7 @@ jobs:
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Commit changes
         run: |
-          git config --local user.name actions-user
-          git config --local user.email "actions@github.com"
           git fetch
           git add ${{ env.AssemblyInfo }}
           git commit -m "Auto update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}" 
-          git push -f origin master
+          git push origin master
