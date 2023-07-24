@@ -28,7 +28,7 @@ jobs:
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Commit changes
         run: |
-          git config --local user.email "actions@github.com"
+          git config --local user.name KirillGutyrchik
           git fetch
           git add ${{ env.AssemblyInfo }}
           git commit -m "Auto update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}" 
