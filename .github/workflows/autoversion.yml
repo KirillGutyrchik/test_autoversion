@@ -17,9 +17,9 @@ jobs:
       - uses: actions/checkout@v3
       - id: date
         run: |
-          echo "::set-output name=Month::$(date +'%MM')"
-          echo "::set-output name=Year::$(date +'%yyyy')"
-          echo "::set-output name=MonthName::$(date +'%B')"
+          echo "{Month}={date +'%m'}" >> $GITHUB_OUTPUT
+          echo "{Year}={date +'%y'}" >> $GITHUB_OUTPUT
+          echo "{MonthName}={date +'%B'}" >> $GITHUB_OUTPUT
       - name: Change version
         run: >
           (Get-Content ${{env.AssemblyInfo}}) -replace
