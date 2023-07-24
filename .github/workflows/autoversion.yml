@@ -27,7 +27,5 @@ jobs:
           git config --local user.email "actions@github.com"
           git fetch
           git add ${{ env.AssemblyInfo }}
-          git commit -m "Auto update version to \ 
-            $((Get-Culture).DateTimeFormat.GetMonthName((Get-Date -format 'MM'))) \ 
-            $(Get-Date -format 'yyyy')" 
+          git commit -m "Auto update version to $((Get-Culture).DateTimeFormat.GetMonthName((Get-Date -format 'MM'))) $(Get-Date -format 'yyyy')" 
           git push -f origin master
