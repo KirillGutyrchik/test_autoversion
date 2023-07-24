@@ -15,11 +15,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - id: date
+        run: |
+          echo "::set-output name=Month::$(date +'%MM')"
+          echo "::set-output name=Year::$(date +'%yyyy')"
+          echo "::set-output name=MonthName::$(date +'%B')"
       - name: Change version
         run: >
           (Get-Content ${{env.AssemblyInfo}}) -replace
           '(?<start>(AssemblyVersion|AssemblyFileVersion)\(\"\d{4}\.)\d{2}(?<end>(\.\*|\.0\.0)"\))',
-          "`${start}$(Get-Date -format 'MM')`${end}" 
+          "`${start}${{ steps.date.outputs.Month }}`${end}" 
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Commit changes
         run: |
@@ -27,5 +32,5 @@ jobs:
           git config --local user.email "actions@github.com"
           git fetch
           git add ${{ env.AssemblyInfo }}
-          git commit -m "Auto update version to $((Get-Culture).DateTimeFormat.GetMonthName((Get-Date -format 'MM'))) $(Get-Date -format 'yyyy')" 
+          git commit -m "Auto update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}" 
           git push -f origin master
