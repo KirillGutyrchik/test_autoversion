@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 env:
-  AssemblyInfo: src/Properties/AssemblyInfo.cs
+  AssemblyInfo: "src/Properties/AssemblyInfo.cs"
 
 jobs:
   autoversion:
