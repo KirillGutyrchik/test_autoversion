@@ -18,7 +18,7 @@ jobs:
       - name: Change version
         run: >
           (Get-Content ${{env.AssemblyInfo}}) -replace
-          '(?<start>(AssemblyInfo|AssemblyFileVersion)\(\"\d{4}\.)\d{2}(?<end>(\.\*|\.0\.0)"\))',
+          '(?<start>(AssemblyVersion|AssemblyFileVersion)\(\"\d{4}\.)\d{2}(?<end>(\.\*|\.0\.0)"\))',
           "`${start}$(Get-Date -format 'MM')`${end}" 
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Commit changes
