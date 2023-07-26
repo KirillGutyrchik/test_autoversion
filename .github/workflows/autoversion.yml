@@ -3,8 +3,7 @@ name: AutoVersion
 on:
   schedule:
   - cron: '33 3 * * *'
-  push:
-    branches: [master]
+  workflow_dispatch:
 
 env:
   AssemblyInfo: ./src/Properties/AssemblyInfo.cs
