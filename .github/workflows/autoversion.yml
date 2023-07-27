@@ -1,4 +1,4 @@
-name: AutoVersion
+name: Auto-update version
 
 on:
   schedule:
