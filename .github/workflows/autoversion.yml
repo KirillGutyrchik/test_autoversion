@@ -39,4 +39,4 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: autoupdate-version
           delete-branch: true
-          
+          reviewers: KirillGutyrchik
