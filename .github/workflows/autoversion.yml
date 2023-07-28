@@ -21,9 +21,11 @@ jobs:
           echo "MonthName=$(date +'%B')" >> $env:GITHUB_OUTPUT
       - name: Change version
         run: >
-          (Get-Content ${{env.AssemblyInfo}}) -replace
-          '(?<start>(AssemblyVersion|AssemblyFileVersion)\(\"\d{4}\.)\d{2}(?<end>(\.\*|\.0\.0)"\))',
-          "`${start}${{ steps.date.outputs.Month }}`${end}" 
+          (Get-Content ${{ env.AssemblyInfo }}) 
+          -replace '(?<start>(AssemblyVersion|AssemblyFileVersion)\(\")\d{4}\.\d{2}',
+          "`${start}${{ steps.date.outputs.Year }}.${{ steps.date.outputs.Month }}" 
+          -replace '(?<start>Copyright ©  2012 - )\d{4}',
+          "`${start}${{ steps.date.outputs.Year }}" 
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
