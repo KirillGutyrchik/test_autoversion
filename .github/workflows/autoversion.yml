@@ -1,5 +1,9 @@
 name: Auto-update version
 
+concurrency:
+  group: ${{ github.event_name }}
+  cancel-in-progress: true
+
 on:
   schedule:
   - cron: '33 3 * * *'
