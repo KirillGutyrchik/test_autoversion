@@ -36,6 +36,7 @@ jobs:
         with:
           title: Auto-update version
           body:
+          labels: invalid
           commit-message: Auto-update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}
           branch: autoupdate-version
           delete-branch: true
