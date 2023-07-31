@@ -1,4 +1,4 @@
-name: Test
+name: Test-workflow
 
 concurrency:
   group: ${{ github.event_name }}
@@ -10,9 +10,9 @@ on:
     types: [ opened, labeled ]
 
 jobs:
-  test:
+  test-workflow:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - id: echo
+      - id: Echo
         run: echo "::debug::${{ github.event_name }}"
