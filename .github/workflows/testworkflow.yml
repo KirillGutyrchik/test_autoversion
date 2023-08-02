@@ -9,7 +9,9 @@ concurrency:
 on:
   pull_request:
     branches: [ master ]
-    types: [ opened, labeled ]
+    types: 
+    - opened
+    - labeled
   workflow_dispatch:
 
 jobs:
