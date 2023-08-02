@@ -3,7 +3,7 @@ name: Test-workflow
 # test changes
 
 concurrency:
-  group: ${{ github.ref }}_${{ github.event_name }}
+  group: "${{ github.event_name }} : ${{ github.ref }}"
   cancel-in-progress: true
 
 on:
