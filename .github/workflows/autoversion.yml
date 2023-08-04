@@ -33,8 +33,9 @@ jobs:
           | Set-Content ${{ env.AssemblyInfo }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
+        env: 
+          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
         with:
-          token: ${{ secrets.PAT }}
           title: Auto-update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}
           body: Auto-update version
           labels: invalid
