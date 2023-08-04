@@ -34,10 +34,11 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          title: Auto-update version
-          body:
+          token: ${{ secrets.PAT }}
+          title: Auto-update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}
+          body: Auto-update version
           labels: invalid
-          commit-message: Auto-update version to ${{ steps.date.outputs.MonthName }} ${{ steps.date.outputs.Year }}
+          commit-message: Auto-update version
           branch: autoupdate-version
           delete-branch: true
           reviewers: KirillGutyrchik
