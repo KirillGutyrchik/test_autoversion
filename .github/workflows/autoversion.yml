@@ -42,4 +42,6 @@ jobs:
           commit-message: Auto-update version
           branch: autoupdate-version
           delete-branch: true
+          committer: KirillGutyrchik <gutyrcikkirill@gmail.com>
+          assignees: KirillGutyrchik
           reviewers: KirillGutyrchik
