@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTOVERSION_ACTION_PAT }}
       - id: date
         run: |
           echo "Month=$(date +'%m')" >> $env:GITHUB_OUTPUT
