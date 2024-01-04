@@ -8,6 +8,10 @@ on:
   #schedule:
   #- cron: '33 3 * * *'
   workflow_dispatch:
+    inputs:
+      secrets:
+        Token:
+          required: true
 
 env:
   AssemblyInfo: ./src/Properties/AssemblyInfo.cs
@@ -19,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.AUTOVERSION_ACTION_PAT }}
+          token: ${{ secrets.Token }}
       - id: date
         run: |
           echo "Month=$(date +'%m')" >> $env:GITHUB_OUTPUT
