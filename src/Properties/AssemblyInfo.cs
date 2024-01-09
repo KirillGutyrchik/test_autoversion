@@ -1,4 +1,4 @@
-[assembly: AssemblyCopyright( "Copyright ©  2012 - 2023" )]
+[assembly: AssemblyCopyright( "Copyright ©  2012 - 2024" )]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
@@ -9,5 +9,5 @@
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2023.12.*")]
-[assembly: AssemblyFileVersion("2023.12.0.0")]
+[assembly: AssemblyVersion("2024.01.*")]
+[assembly: AssemblyFileVersion("2024.01.0.0")]
